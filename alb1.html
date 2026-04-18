@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Album</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: black;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .grid img {
+      width: 100%;
+      aspect-ratio: 1/1; /* Instagram style */
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .back {
+      margin: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* FULLSCREEN VIEW */
+    .viewer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .viewer img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<h1>Trip Album</h1>
+
+<div class="grid">
+  <img src="img1.jpg" onclick="openImg(this)">
+  <img src="img2.jpg" onclick="openImg(this)">
+  <img src="img3.jpg" onclick="openImg(this)">
+</div>
+
+<!-- FULLSCREEN IMAGE -->
+<div class="viewer" id="viewer" onclick="closeImg()">
+  <img id="fullImg">
+</div>
+
+<a href="index.html">
+  <button class="back">Back</button>
+</a>
+
+<script>
+function openImg(img) {
+  document.getElementById("viewer").style.display = "flex";
+  document.getElementById("fullImg").src = img.src;
+}
+
+function closeImg() {
+  document.getElementById("viewer").style.display = "none";
+}
+</script>
+
+</body>
+</html>
